@@ -43,6 +43,7 @@ export const ContactUs = () => {
         alert('message sent successfully');
         console.log(data);
       }
+      console.log('fetched API is ', fetch);
     } catch (error) {
       console.log(error);
     }
