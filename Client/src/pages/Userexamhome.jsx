@@ -19,7 +19,7 @@ export const UserexamHome = () => {
     const fetchExams = async () => {
       try {
         const response = await fetch(
-          'http://localhost:5000/api/exam/examlist',
+          'https://online-examination-system-9l8r.onrender.com/api/exam/examlist',
           {
             method: 'GET',
             // headers: {
@@ -51,7 +51,7 @@ export const UserexamHome = () => {
     // alert(`examID is ${examID} and userID os ${userID}`);
     try {
       const response = await fetch(
-        'http://localhost:5000/api/exam/userattempts',
+        'https://online-examination-system-9l8r.onrender.com/api/exam/userattempts',
         {
           method: 'POST',
           headers: {
