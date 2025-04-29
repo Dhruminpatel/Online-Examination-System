@@ -16,6 +16,10 @@ const corsOptions = {
 //tackling cors
 app.use(cors(corsOptions));
 
+app.get('/', (req, res) => {
+  res.send('Server is live and working!');
+});
+c;
 // Add this middleware to parse  JSON body
 app.use(express.json());
 //login and register
