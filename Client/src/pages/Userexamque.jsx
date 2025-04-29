@@ -99,6 +99,7 @@ import { Footer } from './footer';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ExamSidebar } from '../components/examsidebar';
 import { ExamQue } from '../components/examque';
+const BackendAPI = import.meta.env.VITE_API_BACKENDURL;
 
 export const Userque = () => {
   const { attemptId } = useParams();
@@ -117,7 +118,7 @@ export const Userque = () => {
     const fetchQuestions = async () => {
       try {
         const attemptResponse = await fetch(
-          `${process.env.REACT_APP_API_URL}/api/exam/userattempts/${attemptId}`,
+          `${BackendAPI}/api/exam/userattempts/${attemptId}`,
           {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -136,7 +137,7 @@ export const Userque = () => {
         const examId = attemptData.examId;
 
         const examDetails = await fetch(
-          `${process.env.REACT_APP_API_URL}/api/exam/examlist/${examId}`,
+          `${BackendAPI}/api/exam/examlist/${examId}`,
           {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -151,7 +152,7 @@ export const Userque = () => {
         setExamdata(examData);
 
         const questionDetails = await fetch(
-          `${process.env.REACT_APP_API_URL}/api/exam/questionlist/${examId}`,
+          `${BackendAPI}/api/exam/questionlist/${examId}`,
           {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },

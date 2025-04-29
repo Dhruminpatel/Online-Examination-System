@@ -3,7 +3,7 @@ import { Footer } from './footer';
 import '../style/contactus.css';
 import { useAuth } from '../store/auth';
 import { useState, useEffect } from 'react';
-const APIcontact = import.meta.env.VITE_API_BACKENDURL;
+const BackendAPI = import.meta.env.VITE_API_BACKENDURL;
 const defaultContactForm = { username: '', email: '', message: '' };
 export const ContactUs = () => {
   const [contact, setContact] = useState(defaultContactForm);
@@ -32,7 +32,7 @@ export const ContactUs = () => {
   const handlesubmit = async e => {
     e.preventDefault();
     try {
-      const response = await fetch(`${APIcontact}/api/form/contact`, {
+      const response = await fetch(`${BackendAPI}/api/form/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(contact),

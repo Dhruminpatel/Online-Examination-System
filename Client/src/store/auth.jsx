@@ -65,6 +65,7 @@
 // };
 
 import { createContext, useContext, useState, useEffect } from 'react';
+const BackendAPI = import.meta.env.VITE_API_BACKENDURL;
 
 export const AuthContext = createContext();
 
@@ -95,13 +96,10 @@ export const AuthProvider = ({ children }) => {
     if (!token) return; // ✅ Fix: Prevent unnecessary API calls
 
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/auth/user`,
-        {
-          method: 'GET',
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const response = await fetch(`${BackendAPI}/api/auth/user`, {
+        method: 'GET',
+        headers: { Authorization: `Bearer ${token}` },
+      });
       if (response.ok) {
         const data = await response.json();
         console.log('user data ', data.userData);
