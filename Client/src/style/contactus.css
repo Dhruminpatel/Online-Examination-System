@@ -1,0 +1,47 @@
+.contact-container {
+  @apply flex items-center justify-center min-h-screen bg-gray-100 md:p-6 bg-gradient-to-r from-blue-900 via-indigo-700 to-purple-900;
+}
+
+.contact-wrapper {
+  @apply flex flex-col items-center w-full max-w-4xl overflow-hidden bg-gray-300 rounded-lg shadow-lg md:flex-row;
+}
+
+.contact-image {
+  @apply w-full md:mx-4 md:w-1/2;
+}
+
+.contact-image img {
+  @apply object-cover w-full h-full;
+}
+
+img{
+  @apply rounded-lg 
+}
+
+.contact-form {
+  @apply w-full p-6 md:w-1/2;
+}
+
+.contact-title {
+  @apply text-2xl font-bold text-gray-800;
+}
+
+.contact-subtitle {
+  @apply mb-4 text-gray-600;
+}
+
+.contact-form-group {
+  @apply flex flex-col gap-4;
+}
+
+.contact-input {
+  @apply w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+.contact-textarea {
+  @apply w-full h-32 p-3 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+.contact-button {
+  @apply w-full py-3 font-semibold text-white transition duration-300 bg-blue-500 rounded-lg hover:bg-blue-600;
+}

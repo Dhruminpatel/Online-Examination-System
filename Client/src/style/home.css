@@ -1,0 +1,49 @@
+.home-page{
+    @apply   bg-[#e5e7eb] 
+}
+
+.container{
+    @apply  p-4 md:p-16
+}
+
+.home-content{
+    @apply text-black
+}
+
+.home-image{
+    @apply grid justify-items-end items-center 
+}
+/* .homepage-image{
+    @apply grid justify-items-end
+} */
+
+.connect-buttons{
+    @apply flex mt-4 ml-4;
+}
+.home-redirect-contact{
+    @apply px-3 py-1 ml-4 text-sm font-medium text-white transition duration-200 bg-black border-2 rounded-lg md:text-base hover:bg-gray-600;
+
+}
+
+.first-desc{
+    @apply text-sm
+}
+
+.second-desc{
+    @apply text-black text-sm md:text-base
+}
+
+.heading{
+    @apply  text-lg md:text-2xl  my-1 md:my-3 cursor-pointer text-blue-400 transition duration-200 hover:text-blue-700 font-bold transform hover:scale-110
+}
+
+.rating-main-container{
+    @apply  rounded-xl bg-blue-900  
+}
+    
+.rating-content{
+    @apply m-2 md:m-6 text-white border-r border-white justify-items-center last:border-none 
+}
+.rating-head{
+    @apply  text-xs md:text-xl font-semibold
+}

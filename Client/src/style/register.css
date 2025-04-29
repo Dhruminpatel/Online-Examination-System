@@ -1,0 +1,52 @@
+/* Registration Page Custom Styles */
+.section-registration {
+  @apply p-4 bg-[url(/images/register.jpg)] bg-no-repeat bg-cover bg-center min-h-screen ;
+  /* @apply bg-gradient-to-r from-blue-200 to-blue-600 */
+}
+
+.registration-content-div{
+  @apply  p-2 md:p-16
+}
+
+.reg-desc{
+  @apply text-fuchsia-500 
+}
+
+.reg-desc-1{
+  @apply font-bold text-2xl
+}
+
+.form-container {
+  @apply p-4 bg-white rounded-lg shadow-md;
+}
+
+.form-heading {
+  @apply mb-4 text-2xl font-bold text-center text-green-500;
+}
+
+.input-group {
+  @apply mt-2 ;
+}
+
+.label-styling {
+  @apply block mb-2 font-medium text-gray-600;
+}
+
+.input-field {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-700 ;
+}
+
+.submit-button  {
+  @apply w-full px-4 py-2 text-sm font-medium text-white duration-200 bg-indigo-600 rounded-lg hover:bg-indigo-700;
+}
+
+.login-button {
+  @apply px-3 py-1 text-sm font-medium text-green-700 transition duration-200 border-2 border-green-700 rounded-lg md:text-base hover:bg-green-700 hover:text-white;
+}
+
+.wronginput{
+  @apply font-semibold text-red-600 
+}
+.regicons{
+  @apply px-2
+}
