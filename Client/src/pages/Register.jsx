@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as Icon from '@fortawesome/free-solid-svg-icons';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const BackendAPI = import.meta.env.VITE_API_BACKENDURL;
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -74,14 +75,11 @@ export const Register = () => {
     // alert(user)
     console.log(user);
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/auth/register`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(user),
-        }
-      );
+      const response = await fetch(`${BackendAPI}/api/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user),
+      });
       console.log('🔄 Raw Response:', response); // ✅ Log raw response
 
       //checkign the API is working or not

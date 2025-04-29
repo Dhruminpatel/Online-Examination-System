@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as Icon from '@fortawesome/free-solid-svg-icons';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+const BackendAPI = import.meta.env.VITE_API_BACKENDURL;
 export const Login = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
@@ -63,14 +63,11 @@ export const Login = () => {
     }
     // alert(user)
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/auth/login`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(user),
-        }
-      );
+      const response = await fetch(`${BackendAPI}/api/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user),
+      });
 
       if (response.ok) {
         const result = await response.json();

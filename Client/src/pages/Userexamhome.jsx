@@ -4,6 +4,7 @@ import { Header } from './Header';
 import { Footer } from './footer';
 import { useAuth } from '../store/auth';
 import { useNavigate } from 'react-router-dom';
+const BackendAPI = import.meta.env.VITE_API_BACKENDURL;
 
 export const UserexamHome = () => {
   const [exams, setExams] = useState([]); // Renamed for clarity
@@ -18,15 +19,12 @@ export const UserexamHome = () => {
     if (exams.length > 0) return;
     const fetchExams = async () => {
       try {
-        const response = await fetch(
-          `${process.env.REACT_APP_API_URL}/api/exam/examlist`,
-          {
-            method: 'GET',
-            // headers: {
-            //   'Content-Type': 'application/json',
-            // },
-          }
-        );
+        const response = await fetch(`${BackendAPI}/api/exam/examlist`, {
+          method: 'GET',
+          // headers: {
+          //   'Content-Type': 'application/json',
+          // },
+        });
         const fetcheddata = await response.json();
         console.log('Fetched Exam Data:', fetcheddata); // 🔍 Debugging log
         // ✅ Adjust according to your API response structure
@@ -50,20 +48,17 @@ export const UserexamHome = () => {
     const attemptNumber = 1;
     // alert(`examID is ${examID} and userID os ${userID}`);
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/exam/userattempts`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            userId: userID,
-            examId: examID,
-            attemptNumber: attemptNumber,
-          }),
-        }
-      );
+      const response = await fetch(`${BackendAPI}/api/exam/userattempts`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: userID,
+          examId: examID,
+          attemptNumber: attemptNumber,
+        }),
+      });
 
       const data = await response.json();
       if (response.ok) {
