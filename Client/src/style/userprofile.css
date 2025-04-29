@@ -1,0 +1,51 @@
+.main-container{
+    @apply container px-4 py-8 mx-auto bg-gradient-to-r from-blue-900 via-indigo-200 to-purple-900
+}
+
+.profile-head{
+    @apply flex items-center md:mb-6
+}
+
+.profile-head-text{
+    @apply text-3xl font-bold text-white
+}
+
+.profile-box{
+    @apply overflow-hidden bg-white border border-indigo-200 shadow-lg bg-opacity-10 backdrop-blur-sm rounded-xl border-opacity-20
+}
+
+.profile-topcolor{
+    @apply h-32 bg-gradient-to-r from-indigo-500 to-purple-600
+}
+
+.profile-image{
+    @apply flex justify-center mb-4 -mt-12
+}
+
+.profile-img-inside{
+    @apply flex items-center justify-center w-24 h-24 bg-indigo-100 border-4 border-indigo-900 rounded-full
+}
+
+.profile-username{
+    @apply mb-2 text-2xl font-bold text-center text-white
+}
+
+.quizes-badges{
+    @apply p-3 bg-indigo-900 rounded-lg bg-opacity-30
+}
+
+.qb-content{
+    @apply flex mb-1 text-white
+}
+
+.qb-results{
+    @apply text-2xl font-bold text-white
+}
+
+.profile-achievements-div{
+    @apply pt-4 border-t border-indigo-200 border-opacity-20
+}
+
+.tag-recentachievements{
+    @apply mb-2 font-semibold text-blue-200
+}

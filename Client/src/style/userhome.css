@@ -1,0 +1,46 @@
+.mainheading{
+    @apply text-2xl flex justify-center p-4 font-semibold bg-gray-500 text-white
+}
+
+.examhomemain {
+    @apply  flex flex-col w-full md:flex-row bg-gradient-to-r from-stone-200 to-stone-200; /* Ensures both sections are in a row */
+}
+
+.examlistsection {
+    @apply grid w-full grid-cols-1 gap-4 p-4 md:w-4/5 md:grid-cols-2 lg:grid-cols-3 md:text-sm;
+}
+
+.rightsideexam {
+    @apply  w-full min-h-full p-8 text-red-500 bg-gray-200 shadow-md md:w-1/5;
+}
+
+.examrightsideh {
+    @apply text-lg font-bold text-center md:text-2xl;
+}
+.ulist{
+    @apply pt-4 list-disc 
+}
+.RSContent{
+    @apply  font-semibold
+}
+
+.entity-design{
+    @apply p-4 text-gray-600 hover:bg-violet-600 hover:text-white hover:font-semibold transition duration-200 transform hover:scale-105 rounded-lg shadow-md cursor-default  hover:shadow-lg 
+}
+
+.exam-head{
+    @apply text-xl font-bold grid justify-items-center text-green-500 hover:text-cyan-200
+}
+
+.exam-desc{
+    @apply text-sm
+}
+
+.exam-button{
+    @apply px-4 py-2 mt-3 text-white bg-blue-500 rounded-lg hover:bg-green-600 
+}
+
+.no-exam{
+    @apply col-span-3 text-center text-gray-500
+}
+

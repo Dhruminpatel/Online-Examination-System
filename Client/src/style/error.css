@@ -1,0 +1,15 @@
+.error-container {
+  @apply flex flex-col items-center justify-center h-screen px-6 text-center bg-gray-100;
+}
+
+.error-heading {
+  @apply text-6xl font-bold text-red-600;
+}
+
+.error-message {
+  @apply mt-4 text-lg text-gray-700;
+}
+
+.error-button {
+  @apply px-6 py-3 mt-6 text-white transition duration-300 bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 hover:font-bold;
+}

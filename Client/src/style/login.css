@@ -1,0 +1,41 @@
+/* Registration Page Custom Styles */
+.section-login {
+    @apply  p-16 bg-[url(/images/login.jpg)] bg-no-repeat bg-cover bg-center min-h-screen  ;
+    /* @apply bg-gradient-to-r from-blue-200 to-blue-600 p-12 */
+}
+  
+  .form-container {
+    @apply  bg-white rounded-lg shadow-md;
+  }
+  
+  .form-heading {
+    @apply mb-6 text-2xl font-bold text-center text-green-500;
+  }
+  
+  .input-group {
+    @apply mb-4;
+  }
+  
+  .label-styling {
+    @apply block mb-2 font-medium text-gray-600;
+  }
+  
+  .logininput-field {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-blue-600 focus:ring-2;
+  }
+  
+  .loginsubmit-button  {
+    @apply w-full px-4 py-2 text-sm font-medium text-white duration-200 bg-green-600 rounded-lg hover:bg-green-700;
+  }
+  
+  .register-button {
+    @apply px-3 py-1 text-sm font-medium text-blue-700 transition duration-200 border-2 border-blue-700 rounded-lg md:text-base hover:bg-blue-700 hover:text-white;
+  }
+
+  .loginicons{
+    @apply px-2
+  }
+
+  .wronginput{
+    @apply font-semibold text-red-600 
+  }

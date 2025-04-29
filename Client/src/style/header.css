@@ -1,0 +1,91 @@
+/* General Header Styling */
+.headcontainer {
+  @apply h-16 overflow-visible text-white bg-gray-800; /* Ensures proper height */
+}
+
+.header-content {
+  @apply container flex items-center justify-between h-full px-4 mx-auto;
+}
+
+/* Logo Container */
+.header-logo {
+  @apply flex items-center cursor-pointer;
+}
+
+/* Logo Image */
+.logo {
+  @apply h-12 w-auto max-w-[120px] md:h-16; /* Adjusts height while keeping aspect ratio */
+}
+
+/* Hamburger Icon for Small Screens */
+.hamburger {
+  @apply block cursor-pointer lg:hidden;
+}
+
+.hamburger-line {
+  @apply block w-6 h-1 bg-white mb-1.5;
+}
+
+/* Navigation links - hide on small screens and show on larger screens */
+.nav-links {
+  @apply flex-col items-center hidden gap-6 md:flex md:flex-row;
+}
+
+.nav-links.mobile-menu {
+  @apply absolute left-0 right-0 flex flex-col items-center gap-4 py-4 bg-gray-800 top-16 md:hidden;
+  z-index: 50; /* Ensure the menu is on top */
+}
+
+.nav-item {
+  @apply text-base transition-colors hover:text-green-500;
+}
+
+/* Profile Card */
+.profile-card-container {
+  @apply flex items-center justify-center mt-4 md:mt-0;
+}
+
+.profile-card {
+  @apply flex items-center p-1 space-x-3 border rounded-lg shadow-sm;
+}
+
+.profile-img {
+  @apply object-cover border-2 border-solid rounded-full w-7 h-7;
+}
+
+.profile-name {
+  @apply text-sm font-semibold text-white;
+}
+
+/* Dropdown Menu */
+.dropdownmaindiv {
+  @apply absolute invisible w-full m-0 text-gray-800 bg-gray-200 border-2 border-black border-solid rounded-lg shadow-xl opacity-0 group-hover:visible group-hover:opacity-100;
+  z-index: 60;
+}
+
+.profile-list {
+  @apply flex items-center w-full gap-2 px-4 py-2 font-semibold transition-colors duration-200 bg-gray-100 border-solid rounded-lg cursor-pointer hover:text-white hover:bg-gray-500;
+}
+
+.unordered-list {
+  @apply p-0 m-0 text-black list-none;
+}
+
+.iconclass {
+  @apply text-base text-blue-500;
+}
+
+.profile-list:hover .iconclass {
+  @apply text-white;
+}
+
+/* Hide Profile Dropdown on Small Screens */
+@media (max-width: 767px) {
+  .dropdownmaindiv {
+    display: none; /* Ensures it is hidden by default */
+  }
+
+  .profile-card-container:hover .dropdownmaindiv {
+    display: block; /* Shows on hover */
+  }
+}

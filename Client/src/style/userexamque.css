@@ -1,0 +1,53 @@
+.mainheadingg{
+    @apply text-2xl flex justify-center p-4 font-semibold bg-cyan-200 text-black cursor-default hover:text-rose-400
+}
+
+.sidebarsec{
+    @apply hidden w-1/4 min-h-screen p-4 bg-gray-100 sm:block
+}
+
+.sidebarhead{
+    @apply flex justify-center mb-2 text-lg font-bold
+}
+
+.sidebarque{
+    @apply grid gap-2 md:grid-cols-5
+}
+
+.examquemain{
+    @apply w-3/4 p-6 
+}
+
+.examtime{
+    @apply font-bold
+}
+.examquenum{
+    @apply mb-4 text-2xl font-bold
+}
+
+.examque{
+    @apply text-lg
+}
+
+.exambuttons{
+    @apply mx-auto mt-4
+}
+
+.nextquebutton {
+    @apply px-4 py-2 text-white bg-blue-500 rounded font-bold hover:bg-blue-600
+}
+
+.previousquestion{
+    @apply px-4 py-2 text-white bg-gray-500 rounded font-bold hover:bg-gray-600
+}
+.examsubmitutton{
+    @apply px-4 py-2 text-white bg-green-500 rounded font-bold hover:bg-green-600
+}
+
+.onsubmitexam{
+    @apply fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50
+}
+
+.examsubmitmsg{
+    @apply p-6 bg-white rounded-lg shadow-lg
+}
