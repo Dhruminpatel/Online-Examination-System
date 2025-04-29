@@ -117,7 +117,7 @@ export const Userque = () => {
     const fetchQuestions = async () => {
       try {
         const attemptResponse = await fetch(
-          `https://online-examination-system-9l8r.onrender.com/api/exam/userattempts/${attemptId}`,
+          `${process.env.REACT_APP_API_URL}/api/exam/userattempts/${attemptId}`,
           {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -136,7 +136,7 @@ export const Userque = () => {
         const examId = attemptData.examId;
 
         const examDetails = await fetch(
-          `https://online-examination-system-9l8r.onrender.com/api/exam/examlist/${examId}`,
+          `${process.env.REACT_APP_API_URL}/api/exam/examlist/${examId}`,
           {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -151,7 +151,7 @@ export const Userque = () => {
         setExamdata(examData);
 
         const questionDetails = await fetch(
-          `https://online-examination-system-9l8r.onrender.com/api/exam/questionlist/${examId}`,
+          `${process.env.REACT_APP_API_URL}/api/exam/questionlist/${examId}`,
           {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },

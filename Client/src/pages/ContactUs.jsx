@@ -33,7 +33,7 @@ export const ContactUs = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        'https://online-examination-system-9l8r.onrender.com/api/form/contact',
+        `${process.env.REACT_APP_API_URL}/api/form/contact`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
