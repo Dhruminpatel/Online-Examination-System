@@ -3,7 +3,7 @@ import { Footer } from './footer';
 import '../style/contactus.css';
 import { useAuth } from '../store/auth';
 import { useState, useEffect } from 'react';
-const APIcontact = process.env.REACT_APP_API_URL;
+const APIcontact = import.meta.env.VITE_API_BACKENDURL;
 const defaultContactForm = { username: '', email: '', message: '' };
 export const ContactUs = () => {
   const [contact, setContact] = useState(defaultContactForm);
