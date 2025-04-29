@@ -84,13 +84,7 @@ export const Register = () => {
       );
       console.log('🔄 Raw Response:', response); // ✅ Log raw response
 
-      // Check if the response is JSON
-      // const result = await response.json();
-      // console.log('✅ Server Response:', result);
-
-      // if (!response.ok) {
-      //   throw new Error(result.message || 'Registration failed');
-      // }
+      //checkign the API is working or not
       if (response.ok) {
         const result = await response.json();
         console.log('✅ Server Response:', result);
