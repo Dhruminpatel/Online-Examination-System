@@ -64,7 +64,7 @@ export const Login = () => {
     // alert(user)
     try {
       const response = await fetch(
-        'https://online-examination-system-9l8r.onrender.com/api/auth/login',
+        `${process.env.REACT_APP_API_URL}/api/auth/login`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

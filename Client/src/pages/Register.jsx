@@ -75,7 +75,7 @@ export const Register = () => {
     console.log(user);
     try {
       const response = await fetch(
-        'https://online-examination-system-9l8r.onrender.com/api/auth/register',
+        `${process.env.REACT_APP_API_URL}/api/auth/register`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
