@@ -1,5 +1,5 @@
 const User = require('../models/user-model');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const home = async (req, res) => {
   try {
     console.log('this is home page');
