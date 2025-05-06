@@ -13,6 +13,8 @@ import { UserProfileDashboard } from './pages/userprofile';
 import { Testing } from './pages/testing';
 // import { Header } from "./pages/Header";
 import { AuthProvider } from './store/auth';
+import { Analytics } from '@vercel/analytics/react';
+
 const App = () => {
   return (
     <>
@@ -39,6 +41,7 @@ const App = () => {
           </Routes>
         </AuthProvider>
       </BrowserRouter>
+      <Analytics /> {/* ✅ Add this here */}
     </>
   );
 };
