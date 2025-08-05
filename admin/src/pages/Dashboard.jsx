@@ -7,15 +7,16 @@ export const AdminDashboard = () => {
   const [totalExams, settotalExams] = useState(0);
   const [totalExamsdetails, settotalExamsdetails] = useState([]);
   const [questionlists, setquestionlists] = useState(0);
+  const BackendAPI = import.meta.env.VITE_API_BACKENDURL;
 
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
         // Run all API calls in parallel for better performance
         const [usersRes, examsRes, questionsRes] = await Promise.all([
-          fetch('http://localhost:5000/api/auth/afetcheduser'),
-          fetch('http://localhost:5000/api/exam/examlist'),
-          fetch('http://localhost:5000/api/exam/questionlist'),
+          fetch(`${BackendAPI}/api/auth/afetcheduser`),
+          fetch(`${BackendAPI}/api/exam/examlist`),
+          fetch(`${BackendAPI}/api/exam/questionlist`),
         ]);
 
         if (!usersRes.ok || !examsRes.ok || !questionsRes.ok) {
