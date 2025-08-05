@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { Plus, Search, Edit, Trash2 } from 'lucide-react';
-
+const BackendAPI = import.meta.env.VITE_API_BACKENDURL;
 export const ExamManagement = () => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [examdetails, setexamdetails] = useState([]);
@@ -28,9 +28,7 @@ export const ExamManagement = () => {
   useEffect(() => {
     const fetchexamdetails = async () => {
       try {
-        const fetchexam = await fetch(
-          'http://localhost:5000/api/exam/examlist'
-        );
+        const fetchexam = await fetch(`${BackendAPI}/api/exam/examlist`);
         if (!fetchexam.ok) {
           throw new Error('failed to fetch exam data');
         }

@@ -11,6 +11,7 @@ export const QuestionManagement = () => {
   const [examdata, setexamdata] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedExam, setselectedExam] = useState('All');
+  const BackendAPI = import.meta.env.VITE_API_BACKENDURL;
   const qfieldstructure = {
     examId: '',
     question: '',
@@ -26,9 +27,7 @@ export const QuestionManagement = () => {
   useEffect(() => {
     const fetchquestiondetails = async () => {
       try {
-        const fetchque = await fetch(
-          'http://localhost:5000/api/exam/questionlist'
-        );
+        const fetchque = await fetch(`${BackendAPI}/api/exam/questionlist`);
         if (!fetchque.ok) {
           throw new Error('failed to fetch questions data', Error);
         }
@@ -91,9 +90,7 @@ export const QuestionManagement = () => {
   useEffect(() => {
     const fetchexams = async () => {
       try {
-        const fetchexams = await fetch(
-          `http://localhost:5000/api/exam/examlist`
-        );
+        const fetchexams = await fetch(`${BackendAPI}/api/exam/examlist`);
         if (!fetchexams.ok) {
           throw new Error('failed to fetch Exam details ');
         }
@@ -118,7 +115,7 @@ export const QuestionManagement = () => {
   const deleteQeustion = async questionId => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/exam/questionlist/${questionId}`,
+        `${BackendAPI}/api/exam/questionlist/${questionId}`,
         {
           method: 'DELETE',
         }
@@ -175,7 +172,7 @@ export const QuestionManagement = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/exam/questionlist/${questionId}`,
+        `${BackendAPI}/api/exam/questionlist/${questionId}`,
         {
           method: 'PUT',
           headers: {
@@ -239,16 +236,13 @@ export const QuestionManagement = () => {
   const Createexammodel = async e => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/exam/questionlist`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(updatequestion),
-        }
-      );
+      const response = await fetch(`${BackendAPI}/api/exam/questionlist`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatequestion),
+      });
       if (response.ok) {
         setupdatequestion(qfieldstructure);
         const data = await response.json();

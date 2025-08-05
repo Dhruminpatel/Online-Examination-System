@@ -14,13 +14,12 @@ export const UserManagement = () => {
   const [selectedRole, setselectedRole] = useState('All');
   const usersperpage = 5;
   const [currentPage, setCurrentPage] = useState(1);
+  const BackendAPI = import.meta.env.VITE_API_BACKENDURL;
   //fetchign user details
   useEffect(() => {
     const fetchuserdetails = async () => {
       try {
-        const fetchuser = await fetch(
-          'http://localhost:5000/api/auth/afetcheduser'
-        );
+        const fetchuser = await fetch(`${BackendAPI}/api/auth/afetcheduser`);
         if (!fetchuser.ok) {
           throw new Error('failed to fetch USER data');
         }
