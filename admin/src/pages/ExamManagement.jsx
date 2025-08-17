@@ -60,7 +60,7 @@ export const ExamManagement = () => {
   const deleteExam = async examId => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/exam/examlist/${examId}`,
+        `${BackendAPI}/api/exam/examlist/${examId}`,
         {
           method: 'DELETE',
         }
@@ -111,7 +111,7 @@ export const ExamManagement = () => {
     const examId = ExamToupdate._id;
     try {
       const response = await fetch(
-        `http://localhost:5000/api/exam/examlist/${examId}`,
+        `${BackendAPI}/api/exam/examlist/${examId}`,
         {
           method: 'PUT',
           headers: {
@@ -177,7 +177,7 @@ export const ExamManagement = () => {
   const handlecreatingexam = async e => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/api/exam/examlist`, {
+      const response = await fetch(`${BackendAPI}/api/exam/examlist`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
