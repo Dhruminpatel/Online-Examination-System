@@ -57,7 +57,7 @@ export const Register = () => {
     if (!user.phone.trim()) {
       errors.phone = 'Phone number is required';
     } else if (user.phone.length < 10 || user.phone.length > 11) {
-      errors.phone = 'Phone number should be between 10 and 11 digits';
+      errors.phone = 'Phone number should be exact 10 digits';
     }
 
     if (!user.password.trim()) {
@@ -92,6 +92,7 @@ export const Register = () => {
         // localStorage.setItem('token', result.token);
         setUser({ username: '', email: '', phone: '', password: '' });
         navigate('/login');
+        return;
       } else {
         toast.error('Email Already exists');
       }

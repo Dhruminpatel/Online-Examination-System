@@ -41,13 +41,13 @@ export const Footer = () => {
               <h3 className='footer-head'>Contact Information</h3>
               <ul>
                 <li className='footer-subcontent'>
-                  <a href='#'>support@gmail.com</a>
+                  <a href='#'>pateldhrumin2001@gmail.com</a>
                 </li>
                 <li className='footer-subcontent'>
-                  <a href='#'>+44 1111 111111</a>
+                  <a href='#'>+44 73931 08762</a>
                 </li>
                 <li className='footer-subcontent'>
-                  <a href='#'>Office Address:London,UK</a>
+                  <a href='#'>Office Address:Birmingham,UK</a>
                 </li>
               </ul>
             </div>
@@ -61,11 +61,11 @@ export const Footer = () => {
             </div>
           </div>
           {/* </div> */}
-          <p className='web-rights'>
-            © 2025 Online Examination. All rights reserved.
-          </p>
         </div>
       </footer>
+      <p className='web-rights'>
+        © 2025 Online Examination. All rights reserved.
+      </p>
     </>
   );
 };

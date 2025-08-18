@@ -10,38 +10,6 @@ export const UserProfileDashboard = () => {
   const [activeTab, setActiveTab] = useState('progress');
   const { user } = useAuth();
   const username = user.username;
-  // Hardcoded user data
-  // const user = {
-  //   name: 'John Doe',
-  //   streak: 5,
-  //   quizResults: [
-  //     { id: '1', score: 85 },
-  //     { id: '2', score: 90 },
-  //   ],
-  //   badges: ['1', '2', '3'],
-  // };
-
-  // Hardcoded badges
-  // const badges = [
-  //   {
-  //     id: '1',
-  //     name: 'Beginner',
-  //     description: 'Completed first quiz',
-  //     image: '🏅',
-  //   },
-  //   {
-  //     id: '2',
-  //     name: 'Intermediate',
-  //     description: 'Completed 5 quizzes',
-  //     image: '🎖️',
-  //   },
-  //   {
-  //     id: '3',
-  //     name: 'Expert',
-  //     description: 'Completed 10 quizzes',
-  //     image: '🥇',
-  //   },
-  // ];
 
   // Hardcoded quizzes
   const quizzes = [

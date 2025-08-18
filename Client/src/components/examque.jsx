@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+const BackendAPI = import.meta.env.VITE_API_BACKENDURL;
+
 export const ExamQue = ({
   questions,
   activeQue,
@@ -12,7 +14,9 @@ export const ExamQue = ({
   const [showModal, setShowModal] = useState(false); // Success modal visibility
   const [timeleft, settimeleft] = useState(0); // Time left for the exam
   const [showConfirmationModal, setshowConfirmationModal] = useState(false); // Confirmation modal visibility
+  const [isSubmitted, setIsSubmitted] = useState(false); // Track if exam is already submitted
   const { attemptId } = useParams();
+
   // Get the active question based on the activeQue index
   const activeQuestion = questions[activeQue] || {};
 
@@ -36,6 +40,7 @@ export const ExamQue = ({
 
   // Handle user answer selection
   const userSelectedAns = async (userquestionID, keyresposneId) => {
+    if (isSubmitted) return; // Prevent selecting answers if already submitted
     setuseranswer(previousans => ({
       ...previousans,
       [userquestionID]: keyresposneId,
@@ -71,6 +76,7 @@ export const ExamQue = ({
 
   // Submit exam logic
   const submitexam = async () => {
+    if (isSubmitted) return; // Prevent duplicate submission
     if (!isExamCompleted()) {
       setshowConfirmationModal(true); // Show confirmation modal if exam is not complete
     } else {
@@ -102,9 +108,6 @@ export const ExamQue = ({
       // Prepare user submission data
       const endTime = new Date();
       const userSubmitexam = {
-        // userId: userId,
-        // examId: examdata._id,
-        // attemptNumber: 1,
         startTime: new Date(),
         endTime: endTime,
         isSubmitted: true,
@@ -114,7 +117,7 @@ export const ExamQue = ({
 
       // Send the submission data to the server
       const updateresponse = await fetch(
-        `http://localhost:5000/api/exam/userattempts/${attemptId}`,
+        `${BackendAPI}/api/exam/userattempts/${attemptId}`,
         {
           method: 'PUT',
           headers: {
@@ -132,7 +135,8 @@ export const ExamQue = ({
       console.log('Attempt saved to the collections', savedata);
 
       setShowModal(true); // Show success modal after submission
-      // console.log()
+      setIsSubmitted(true); // Mark as submitted to prevent resubmission
+      return;
     } catch (error) {
       console.log('Error in submitting the exam:', error);
     }
@@ -146,31 +150,58 @@ export const ExamQue = ({
     setshowConfirmationModal(false); // Close modal after response
   };
 
-  // Automatically submit the exam when the timer reaches zero
-  // useEffect(() => {
+  // Timer with auto-submit
   const timerautosubmit = () => {
     const initialTime = defaultime();
     settimeleft(initialTime); // Initialize the timer
 
-    // Ensure timer runs only once and is cleaned up
     const timer = setInterval(() => {
       settimeleft(prevTime => {
         if (prevTime <= 1) {
-          clearInterval(timer); // Stop the timer when it reaches 0
-          submitexam(); // Automatically submit the exam
+          clearInterval(timer);
+          submitexam(); // Auto-submit only if not already submitted
           return 0;
         }
         return prevTime - 1;
       });
     }, 1000);
 
-    // Cleanup function to ensure no duplicate timers are created
     return () => clearInterval(timer);
   };
+
+  // Fetch attempt status when component mounts
   useEffect(() => {
-    const cleantimer = timerautosubmit();
-    return cleantimer;
-  }, [examdata]); // Only run once when `examdata` is loaded
+    const fetchAttemptStatus = async () => {
+      try {
+        const res = await fetch(
+          `${BackendAPI}/api/exam/userattempts/${attemptId}`
+        );
+        const data = await res.json();
+        if (data.isSubmitted) {
+          setIsSubmitted(true);
+          setShowModal(true);
+          setuseranswer(
+            data.answers.reduce((acc, curr) => {
+              acc[curr.questionId] = curr.selectedOption;
+              return acc;
+            }, {})
+          );
+        }
+      } catch (error) {
+        console.log('Error fetching attempt status:', error);
+      }
+    };
+
+    fetchAttemptStatus();
+  }, [attemptId]);
+
+  // Start timer only if exam not submitted
+  useEffect(() => {
+    if (!isSubmitted) {
+      const cleantimer = timerautosubmit();
+      return cleantimer;
+    }
+  }, [examdata, isSubmitted]);
 
   return (
     <>
@@ -184,7 +215,6 @@ export const ExamQue = ({
             <span className='timecounting'>{formattedtime()}</span>
           </div>
         </div>
-        <p>{/* Duration: {defaultime()} and marks: {examdata.totalMarks} */}</p>
         <p className='examque'>
           {activeQuestion.question || 'Loading question...'}
         </p>
@@ -200,7 +230,8 @@ export const ExamQue = ({
                     name='answer'
                     id={key}
                     checked={useranswer[activeQuestion._id] === key}
-                    onChange={() => userSelectedAns(activeQuestion._id, key)} // Store user selected answer
+                    onChange={() => userSelectedAns(activeQuestion._id, key)}
+                    disabled={isSubmitted} // Disable selection if already submitted
                   />
                   <label htmlFor={key} className='ml-2 text'>
                     {value}
@@ -226,7 +257,11 @@ export const ExamQue = ({
                 Next Question
               </button>
             ) : (
-              <button className='examsubmitutton' onClick={submitexam}>
+              <button
+                className='examsubmitutton'
+                onClick={submitexam}
+                disabled={isSubmitted}
+              >
                 Submit Exam
               </button>
             )}

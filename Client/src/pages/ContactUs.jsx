@@ -3,6 +3,8 @@ import { Footer } from './footer';
 import '../style/contactus.css';
 import { useAuth } from '../store/auth';
 import { useState, useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const BackendAPI = import.meta.env.VITE_API_BACKENDURL;
 const defaultContactForm = { username: '', email: '', message: '' };
 export const ContactUs = () => {
@@ -40,11 +42,14 @@ export const ContactUs = () => {
       if (response.ok) {
         setContact(defaultContactForm);
         const data = await response.json();
-        alert('message sent successfully');
+        toast.success('Your message has been sent successfully');
+        // alert('message sent successfully');
         console.log(data);
+        return;
       }
       console.log('fetched API is ', APIcontact);
     } catch (error) {
+      toast.error(' Failed to send Message');
       console.log(error);
     }
     console.log(contact);
@@ -53,12 +58,20 @@ export const ContactUs = () => {
   return (
     <>
       <Header />
+      <ToastContainer
+        position='top-left'
+        autoClose={6000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeButton={true}
+        draggable={true}
+        className={'text-xs md:text-base p-0 m-0 mx-auto md:mt-20 '}
+      />
       <section className='contact-container'>
         <div className='contact-wrapper'>
           <div className='contact-image'>
             <img src='/images/Contactus.jpg' alt='Contact Us' />
           </div>
-
           <div className='contact-form'>
             <h2 className='contact-title'>Get in Touch</h2>
             <p className='contact-subtitle'>We'd love to hear from you!</p>
@@ -71,6 +84,7 @@ export const ContactUs = () => {
                 name='username'
                 value={contact.username}
                 onChange={handleInput}
+                required
               />
               <input
                 type='email'
@@ -79,6 +93,7 @@ export const ContactUs = () => {
                 name='email'
                 value={contact.email}
                 onChange={handleInput}
+                required
               />
               <textarea
                 placeholder='Your Message'
@@ -86,6 +101,7 @@ export const ContactUs = () => {
                 name='message'
                 value={contact.message}
                 onChange={handleInput}
+                required
               ></textarea>
               <button type='submit' className='contact-button'>
                 Send Message
