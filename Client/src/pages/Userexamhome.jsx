@@ -90,11 +90,14 @@ export const UserexamHome = () => {
   return (
     <>
       <Header />
-      <h2 className='cursor-default mainheading'>{`Welcome ${
-        user.username
+      <h2 className='cursor-default mainheading'>{
+        `Welcome to Online Examination Portal `
+        //`Welcome ${
+        //user.username
         // user._id
         //login user id is defined as  "user._id"
-      }, Select Your Exam`}</h2>
+        //}, Select Your Exam`
+      }</h2>
       <div className='examhomemain'>
         <section className='examlistsection'>
           {exams.length > 0 ? (

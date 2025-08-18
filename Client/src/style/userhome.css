@@ -7,7 +7,7 @@
 }
 
 .examlistsection {
-    @apply grid w-full grid-cols-1 gap-4 p-4 md:w-4/5 md:grid-cols-2 lg:grid-cols-3 md:text-sm;
+    @apply grid w-full grid-cols-1 gap-4 p-4 md:h-5 md:w-4/5 md:grid-cols-2 lg:grid-cols-3 md:text-sm;
 }
 
 .rightsideexam {
@@ -25,7 +25,7 @@
 }
 
 .entity-design{
-    @apply p-4 text-gray-600 hover:bg-violet-600 hover:text-white hover:font-semibold transition duration-200 transform hover:scale-105 rounded-lg shadow-md cursor-default  hover:shadow-lg 
+    @apply p-4 text-gray-600 hover:bg-gray-500 hover:text-white hover:font-semibold transition duration-500 transform  rounded-lg shadow-md cursor-default  hover:shadow-lg 
 }
 
 .exam-head{
